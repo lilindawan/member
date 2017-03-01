@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>Flatpoint - Responsive Web App Template</title>
+  
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/bootstrap-responsive.css}" rel="stylesheet" />
+<link th:href="@{/css/stylesheet.css}" rel="stylesheet" />
+<link th:href="@{/css/index.css}" rel="stylesheet" />
+<link th:href="@{/icon/font-awesome.css}" rel="stylesheet" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	th:th:href="@{/img/apple-touch-icon-144-precomposed.html}" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	th:href="@{/img/apple-touch-icon-114-precomposed.html}" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	th:href="@{/img/apple-touch-icon-72-precomposed.html}" />
+<link rel="apple-touch-icon-precomposed"
+	th:href="@{/img/apple-touch-icon-57-precomposed.html}" />
+    
+  </head>
+
+  <body>
+
+    
+    <div id="content"> <!-- Content start -->
+      <div class="inner_content">
+          <div class="widgets_area">
+                <div class="row-fluid">
+                    <div class="span12">
+                         <div  class="daohanglink">
+                           <span class="daohang"></span>
+                           <span>首页</span><span>></span>
+                           <span>会员管理</span><span>></span>
+                           <span>添加会员</span>
+                           
+                         </div>
+                        <div class="well brown">
+                         <form th:action="@{/addUser.do}" method="post" onsubmit="return check()" >
+                            <div class="form_list"><label class="lable_title">会员名称</label><input class="form_input" type="text" name="name"/></div>
+                            <div class="form_list"><label class="lable_title">会员生日</label><input class="form_input" type="text" name="member_birthday"/></div>
+                            <div class="form_list"><label class="lable_title">到期日期</label><input class="form_input" type="text" id="due_date" value="2099-10-10" readonly="readonly" name="due_date"/></div>
+                            <div class="form_list"><label class="lable_title">手机号码</label><input class="form_input" type="text" name="phone_number"/></div>
+                            <div class="form_list"><label class="lable_title">充值金额</label><input class="form_input" type="text" name="total_money"/></div>
+                            <div class="form_list"><label class="lable_title">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</label><input class="form_input" type="text" name="remarks"/></div>
+                            <div class="form_list"><input type="submit" class="submit" value="&nbsp;&nbsp;提&nbsp;&nbsp;交&nbsp;&nbsp;" /></div>
+                         
+                         </form>   
+                           
+                          
+                        </div>
+                    </div>
+                </div>
+
+            
+            </div>
+        </div>
+    </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script th:src="@{/js/jquery-1.10.2.js}"></script>
+    <script th:src="@{/js/jquery-ui-1.10.3.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/flatpoint_core.js}"></script>
+     <script th:src="@{/js/library/bootstrap-datetimepicker.js}"></script>
+    <script type="text/javascript" >
+      jQuery('#due_date').datetimepicker({
+          minView: "month", //选择日期后，不会再跳转去选择时分秒 
+          format: 'yyyy-mm-dd',
+          todayBtn:  1,
+          autoclose: 1,
+      });
+      
+      
+      function check(){
+          var total_money = jQuery("input[name='total_money']").val();
+          var name = jQuery("input[name='name']").val();
+          var phone_number = jQuery("input[name='phone_number']").val();
+          if(name==""){
+              alert("请输入会员名称");
+              return false;
+          }
+          if(phone_number==""){
+              alert("请输入手机号码");
+              return false;
+          }
+          if(total_money==""){
+              alert("请输入消费金额");
+              return false;
+          }
+          if(isNaN(total_money) ){
+              alert("消费金额必须为数字");
+              return false;
+          }
+          return true;
+      }
+     
+    </script> 
+
+  </body>
+</html>

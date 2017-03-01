@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.member.mapper.PayCheckInfoMapper" >
+    
+    <insert id="save" parameterType="com.member.entity.PayCheckInfo">
+        insert into paycheckInfo(member_id,paycheck_money,paycheck_remarks,paycheck_date) 
+        values(#{member_id,jdbcType=VARCHAR},#{paycheck_money,jdbcType=VARCHAR},#{paycheck_remarks,jdbcType=VARCHAR} ,#{paycheck_date,jdbcType=TIMESTAMP})
+    </insert>
+  
+    
+</mapper>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.member.mapper.ConsumeInfoMapper" >
+    
+    <insert id="save" parameterType="com.member.entity.ConsumeInfo">
+        insert into consumeInfo(member_id,consume_money,consume_remarks,consume_date) 
+        values(#{member_id,jdbcType=VARCHAR},#{consume_money,jdbcType=VARCHAR},#{consume_remarks,jdbcType=VARCHAR} ,#{consume_date,jdbcType=TIMESTAMP})
+    </insert>
+  
+    
+</mapper>

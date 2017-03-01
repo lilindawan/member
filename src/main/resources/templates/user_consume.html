@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>会员消费</title>
+  
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/bootstrap-responsive.css}" rel="stylesheet" />
+<link th:href="@{/css/stylesheet.css}" rel="stylesheet" />
+<link th:href="@{/css/index.css}" rel="stylesheet" />
+<link th:href="@{/icon/font-awesome.css}" rel="stylesheet" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	th:th:href="@{/img/apple-touch-icon-144-precomposed.html}" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	th:href="@{/img/apple-touch-icon-114-precomposed.html}" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	th:href="@{/img/apple-touch-icon-72-precomposed.html}" />
+<link rel="apple-touch-icon-precomposed"
+	th:href="@{/img/apple-touch-icon-57-precomposed.html}" />
+    
+  </head>
+
+  <body>
+
+    
+    <div id="content"> <!-- Content start -->
+      <div class="inner_content">
+          <div class="widgets_area">
+                <div class="row-fluid">
+                    <div class="span12">
+                         <div  class="daohanglink">
+                           <span class="daohang"></span>
+                           <span>首页</span><span>></span>
+                           <span>会员管理</span><span>></span>
+                           <span>会员消费</span>
+                           
+                         </div>
+                        <div class="well brown">
+                         <form th:action="@{/userConsume.do}" method="post" onsubmit="return check()" >
+                            <div class="form_list" style="display:none"><label class="lable_title">会员ID</label><input class="form_input" type="hidden" name="id" th:value="${user.member_id}"/></div>
+                            <div class="form_list"><label class="lable_title">会员名称</label><input class="form_input" type="text"   readonly="readonly" name="name" th:value="${user.member_name}"/></div>
+                            <div class="form_list"><label class="lable_title">会员生日</label><input class="form_input" type="text"   readonly="readonly" name="member_birthday" th:value="${user.member_birthday}"/></div>
+                            <div class="form_list"><label class="lable_title">到期日期</label><input class="form_input" type="text"   readonly="readonly" name="due_date" th:value="${user.due_date}"/></div>
+                            <div class="form_list"><label class="lable_title">手机号码</label><input class="form_input" type="text"   readonly="readonly" name="phone_number" th:value="${user.phone_number}"/></div>
+                            <div class="form_list"><label class="lable_title">可用金额</label><input class="form_input" type="text"   readonly="readonly" name="available_amount" th:value="${user.available_amount}"/></div>
+                            <div class="form_list"><label class="lable_title">消费金额</label><input class="form_input" type="text"  name="consume_money" /></div>
+                            <div class="form_list"><label class="lable_title">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</label><input class="form_input" type="text"  name="consume_remarks" /></div>
+                            <div class="form_list"><input type="submit" class="submit" value="&nbsp;&nbsp;提&nbsp;&nbsp;交&nbsp;&nbsp;" /></div>
+                         </form>   
+                           
+                          
+                        </div>
+                    </div>
+                </div>
+
+            
+            </div>
+        </div>
+    </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script th:src="@{/js/jquery-1.10.2.js}"></script>
+    <script th:src="@{/js/jquery-ui-1.10.3.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/flatpoint_core.js}"></script> 
+    <script type="text/javascript" >
+    function check(){
+    	var consume_money = jQuery("input[name='consume_money']").val();
+    	var available_amount = jQuery("input[name='available_amount']").val();
+    	if(consume_money==""){
+    		alert("请输入消费金额");
+    		return false;
+    	}
+    	if(isNaN(consume_money) ){
+    		alert("消费金额必须为数字");
+    		return false;
+    	}
+    	if(parseFloat(consume_money)>parseFloat(available_amount)){
+    		alert("消费金额不能大于可用金额");
+    		return false;
+    	}
+    	return true;
+    }
+   
+    </script> 
+  </body>
+</html>

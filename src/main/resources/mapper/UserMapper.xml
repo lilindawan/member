@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.member.mapper.UserMapper" >
+    
+    <insert id="save" parameterType="com.member.entity.User">
+        insert into member(member_name,member_birthday,due_date,phone_number,available_amount,total_consumption,total_money,remarks,creation_date) 
+        values(#{member_name,jdbcType=VARCHAR},#{member_birthday,jdbcType=VARCHAR},#{due_date,jdbcType=VARCHAR},#{phone_number,jdbcType=VARCHAR}
+            ,#{available_amount,jdbcType=VARCHAR},#{total_consumption,jdbcType=VARCHAR},#{total_money,jdbcType=VARCHAR} ,#{remarks,jdbcType=VARCHAR},#{creation_date,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="update" parameterType="com.member.entity.User">
+        update  member(member_name,member_birthday,due_date,phone_number,available_amount,total_consumption,total_money,remarks,creation_date) 
+        values(#{member_name,jdbcType=VARCHAR},#{member_birthday,jdbcType=VARCHAR},#{due_date,jdbcType=VARCHAR},#{phone_number,jdbcType=VARCHAR}
+            ,#{available_amount,jdbcType=VARCHAR},#{total_consumption,jdbcType=VARCHAR},#{total_money,jdbcType=VARCHAR} ,#{remarks,jdbcType=VARCHAR},#{creation_date,jdbcType=TIMESTAMP})
+    </update>
+    
+    <select id="selectById" resultType="com.member.entity.User">
+        select * from member where member_id = #{member_id,jdbcType=NUMERIC}
+    </select>
+    
+    <update id="updateById" parameterType="com.member.entity.User">
+        update member set  
+        member_name = #{member_name,jdbcType=VARCHAR} ,
+        member_birthday = #{member_birthday,jdbcType=VARCHAR} ,
+        due_date = #{due_date,jdbcType=VARCHAR} ,
+        phone_number = #{phone_number,jdbcType=VARCHAR} ,
+        available_amount = #{available_amount,jdbcType=VARCHAR} ,
+        total_consumption = #{total_consumption,jdbcType=VARCHAR} 
+        where member_id = #{member_id,jdbcType=NUMERIC}
+    </update>
+    
+    <delete id="deleteById">
+        delete from member where member_id = #{member_id,jdbcType=NUMERIC}
+    </delete>
+    
+    <select id="queryAll" resultType="com.member.entity.User">
+        select * from member
+    </select>
+    
+</mapper>
