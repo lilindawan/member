@@ -67,9 +67,10 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+		 <defaultGoal>compile</defaultGoal>
     </build>
     
-    <defaultGoal>compile</defaultGoal>
+   
     
 
 </project>
